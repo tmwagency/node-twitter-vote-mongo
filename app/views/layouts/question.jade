@@ -1,0 +1,42 @@
+doctype 5
+html
+	- var title = question.title
+	- var page = 'question'
+
+	include ../includes/head
+
+	- var urlFriendlyShareText = encodeURI(question.twitterText);
+
+
+	- function addCommas(nStr){
+	- 	  nStr += '';
+	- 	  x = nStr.split('.');
+	- 	  x1 = x[0];
+	- 	  x2 = x.length > 1 ? '.' + x[1] : '';
+	- 	  var rgx = /(\d+)(\d{3})/;
+	- 	  while (rgx.test(x1)) {
+	- 		x1 = x1.replace(rgx, '$1' + ',' + '$2');
+	- 	  }
+	- 	  return x1 + x2;
+	- }
+
+	body
+		.container(data-page-type="question")
+			.page-header
+				h1.page-header-title #{question.title}
+				div.page-header-subcontainer
+					p.page-header-description #{question.subtitle}
+					include ../includes/social-buttons
+
+
+			- var tagCount = question.tags.length
+			div(id='question', class='question question-#{question.questionURL} colCount-#{tagCount}', data-questionurl='#{question.questionURL}')
+					//dependent on the question variable passed through by node, we will display different templates, so we can style slightly differently
+					case question.questionURL
+						when 'happiness': include ../questions/horizontal-default.jade
+						default
+							include ../questions/vertical-default.jade
+
+			include ../includes/footer
+
+	include ../includes/foot

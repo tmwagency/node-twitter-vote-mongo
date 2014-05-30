@@ -1,0 +1,19 @@
+- var categoryCounter = 0;
+for tag in question.tags
+	- categoryCounter++;
+
+	- var percentage = (Math.round( tags[tag].percentage * 10 ) / 10) + '%';
+
+	if (tag.indexOf('#') !== -1)
+		- var nonHashTagged = tag.substr(1)
+		div(class="question-category category-#{categoryCounter} category-#{nonHashTagged}",id="#{nonHashTagged}", data-term="#{tag}")
+			.category-visual-counter
+			h2.question-category-title=tag
+				span.question-category-percentage #{percentage}
+				span.question-category-votes (#{addCommas(tags[tag].votes)})
+	else
+		div(class="question-category category-#{categoryCounter} category-#{tag}",id="#{tag}", data-term="#{tag}")
+			.category-visual-counter
+			h2.question-category-title=tag
+				span.question-category-percentage #{percentage}
+				span.question-category-votes (#{addCommas(tags[tag].votes)})

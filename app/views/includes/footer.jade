@@ -1,0 +1,11 @@
+.page-footer
+	-if (page !== 'home')
+		nav.nav-main
+			ul
+				li: a(class="", href="/") View all debates
+	- else
+		include ../includes/social-buttons
+
+
+	h1.footer-logo
+		a(href="/") Twitter Vote Counter

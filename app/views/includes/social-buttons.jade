@@ -1,0 +1,12 @@
+- var questionLink = ''
+-if (page === 'question')
+	- questionLink = 'question/' + question.questionURL
+
+-var encodedShareLink = encodeURIComponent(pkg.url + questionLink)
+
+ul.social-buttons
+	li
+		a(class='social-button social-buttons-twitter', href='https://twitter.com/intent/tweet?button_hashtag=MassDebates&text=#{urlFriendlyShareText}&url=#{encodedShareLink}', data-related='lynxeffect', data-url='#{encodedShareLink}', target="_blank") Twitter
+		a(class='social-button social-buttons-facebook', href='https://www.facebook.com/sharer.php?s=100&p[url]=#{encodedShareLink}&p[title]=Lynx+Mass+Debates&p[summary]=#{urlFriendlyShareText}&p[images][0]=#{pkg.url}images/sharing-icons/apple-touch-icon-152x152.png', target="_blank") Facebook
+		a(class='social-button social-buttons-gplus', href='https://plus.google.com/share?url=#{encodedShareLink}', target="_blank") Gplus
+		a(class='social-button social-buttons-pinterest', href='http://pinterest.com/pin/create/button/?url=#{encodedShareLink}&description=#{urlFriendlyShareText}&media=#{pkg.url}images/sharing-icons/sharing-large.png', target="_blank") Pinterest

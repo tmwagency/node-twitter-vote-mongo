@@ -1,0 +1,44 @@
+doctype 5
+html
+	include ../includes/head
+
+	block vars
+
+	body
+		.container.home(data-page-type="home")
+
+			- var questionCounter = 0;
+			for questions in questionsJSON
+
+				//if the question counter is 0, then output our homepage center content before the next question
+				if (questionCounter === 0)
+					section(class="questionTeaser home-header")
+						h1.home-header-title
+							| #{title}
+						p.home-header-content
+							| This is a more complex Twitter vote counter.
+						p.home-header-content
+							| #{pageContent}
+
+
+
+				a(href="/question/#{questions.questionURL}", class="questionTeaser questionTeaser-#{questions.questionURL}")
+					section
+						h2.questionTeaser-title #{questions.title}
+
+				- questionCounter++;
+
+			- questionCounterRemainder = questionCounter % 3;
+
+			- if (questionCounterRemainder > 0)
+				- for (questionCounterRemainder; questionCounterRemainder > 0; questionCounterRemainder--)
+					section(class="questionTeaser questionTeaser--noLink")
+						.questionTeaser-title
+							h2 Coming Soon
+							p Some content in here
+						p.questionTeaser-questionMark ?
+
+
+			include ../includes/footer
+
+		include ../includes/foot

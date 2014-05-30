@@ -1,0 +1,514 @@
+
+html,body,
+.container {
+	width:100%;
+	height:100%;
+	margin:0;
+	padding:0;
+}
+
+body {
+	color: #fff;
+	background: #363636;
+}
+//specific for question page
+[data-page-type="question"] {
+	@include respond-min($breakpoint-mid) {
+		padding-bottom: 50px;
+	}
+}
+	//solely to help position the header centrally when fixing the position
+	.page-header {
+		width: 100%;
+
+		@include prefixer(transition, 350ms, webkit moz ms o spec);
+
+		@include respond-min($breakpoint-mid) {
+			position: fixed;
+			top:0;
+			left :50%;
+			z-index: 2;
+
+			width: 95%;
+			margin: 15px 0 0 -47.5%;
+		}
+		@include respond-min(700) {
+			width: 85%;
+			margin: 40px 0 0 -42.5%;
+		}
+		@include respond-min($breakpoint-wide) {
+			width: 70%;
+			margin: 40px 0 0 -35%;
+		}
+	}
+		.page-header-title {
+			@include font-size(24);
+			background: white;
+			margin: 0;
+			padding: 10px 20px;
+
+			line-height: 1;
+
+			@include respond-min($breakpoint-mid) {
+				text-align: center;
+				@include font-size(36);
+			}
+		}
+
+		.page-header-subcontainer > * {
+			margin-bottom: 0;
+		}
+
+		.page-header-description {
+			background: #252525;
+			padding: 10px 20px;
+
+			font-family: $sans-font-family;
+
+			color: #999;
+
+			@include respond-min($breakpoint-mid) {
+				float: left;
+				width:70%;
+				padding: 14px 20px;
+			}
+			@include respond-min(1200) {
+				width:80%;
+			}
+		}
+		.social-buttons {
+			list-style: none;
+			overflow: hidden;
+			margin-left: 0;
+			border: 20px solid #252525;
+			border-bottom: 12px solid #252525;
+			border-top: none;
+
+
+			@include respond-min($breakpoint-mid) {
+				float: right;
+				width: 30%;
+				border: none;
+			}
+			@include respond-min(1200) {
+				width: 20%;
+			}
+
+			.page-footer & {
+				overflow: hidden;
+				border: none;
+
+				@include respond-min($breakpoint-mid) {
+					position: absolute;
+					left: 50%;
+					width: 22%;
+					margin-left: -11%;
+					margin-top: -12px;
+				}
+			}
+		}
+
+			.social-buttons-twitter		{	background: #85ccef url('#{$svg-path}/icons/logo-twitter.svg') no-repeat center center;
+				&:hover { background-color: #71b0cf; }
+				.no-svg & {					background-image: url('#{$img-path}/logos/logo-twitter.png'); }
+			}
+			.social-buttons-facebook	{	background: #5c79bc url('#{$svg-path}/icons/logo-facebook.svg') no-repeat center center;
+				&:hover { background-color: #50689f; }
+				.no-svg & {					background-image: url('#{$img-path}/logos/logo-facebook.png'); }
+			}
+			.social-buttons-gplus		{	background: #4c4c4b url('#{$svg-path}/icons/logo-gplus.svg') no-repeat center center;
+				&:hover { background-color: #383838; }
+				.no-svg & {					background-image: url('#{$img-path}/logos/logo-gplus.png'); }
+			}
+			.social-buttons-pinterest	{	background: #e25258 url('#{$svg-path}/icons/logo-pinterest.svg') no-repeat center center;
+				&:hover { background-color: #b74247; }
+				.no-svg & {					background-image: url('#{$img-path}/logos/logo-pinterest.png'); }
+			}
+
+			.social-button {
+				float: left;
+				width: 25%;
+				padding: 10px 0;
+				overflow: hidden;
+
+				text-indent: 100%;
+
+				@include prefixer(transition, background-color 350ms ease-out, webkit moz ms o spec);
+
+				@include respond-min($breakpoint-mid) {
+					padding: 14px 0;
+				}
+
+				.page-footer & {
+					@include respond-min($breakpoint-mid) {
+						width: 25%;
+					}
+				}
+			}
+
+	.logo {
+		display: block;
+		background: url('#{$img-path}/logo.png') no-repeat center center;
+
+		overflow: hidden;
+		text-indent: 101%;
+	}
+
+	.page-footer {
+		clear: left;
+		z-index: 100;
+		background: #fff;
+
+		width: 100%;
+		overflow: hidden;
+		padding: 12px 20px 2px;
+
+		[data-page-type="question"] & {
+			@include respond-min($breakpoint-mid) {
+				position: fixed;
+				bottom: 0;
+				height: 50px;
+			}
+		}
+	}
+		.footer-logo {
+			float:left;
+			margin: 0;
+
+			@include font-size(13);
+			font-family: $serif-font-family;
+			font-weight: normal;
+			font-style: italic;
+			color: #898989;
+
+			@include respond-min($breakpoint-mid) {
+				padding-top: 4px;
+
+				br {
+					display: none;
+				}
+			}
+
+
+			.logo {
+				display: inline;
+				float: left;
+				width: 50px;
+				margin: -1px 10px 0 0;
+				background: url('#{$img-path}/logo-footer.png') no-repeat left center;
+			}
+		}
+		.nav-main {
+			width: 100%;
+			margin-bottom: 20px;
+
+			@include respond-min($breakpoint-mid) {
+				position: absolute;
+				left: 50%;
+				width: 32%;
+				margin-left: -16%;
+				margin-top: -12px;
+			}
+
+
+			> ul {
+				overflow: hidden;
+				margin: 0;
+
+				> li {
+					float: left;
+					width: 100%;
+				}
+			}
+					a {
+						display: block;
+						padding: 14px 20px;
+						background-color: #e1e1e1;
+
+						text-align: center;
+						text-transform: uppercase;
+
+						.active,
+						&:hover {
+							background-color: #252525;
+							color: #ebebeb;
+						}
+					}
+		}
+
+		.page-footer-policy {
+
+			@include respond-min($breakpoint-mid) {
+				float: right;
+				width: 70%;
+			}
+		}
+			.logo-unilever {
+				float: right;
+				margin-left: 10px;
+			}
+			.page-footer-policy-copyright,
+			.page-footer-policy-links a {
+				@include font-size(10);
+				text-transform: uppercase;
+			}
+			.page-footer-policy-copyright {
+				@include font-size(10);
+				color: #999;
+				text-align: right;
+
+				margin: 0;
+			}
+			.page-footer-policy-links {
+				> li {
+					float: right;
+					list-style: none;
+					margin-left: 5px;
+					line-height: 1;
+
+
+					&:last-child a {
+						border: none;
+					}
+				}
+				a {
+					color: #999;
+					border-left: 1px solid #ccc;
+					padding-left: 5px;
+				}
+			}
+
+//  =================================
+//  === HomePage Specific styling ===
+//  =================================
+
+.home-header {
+	background: $blue;
+	padding: 10px 3%;
+	text-align: center;
+
+	@include respond-min($breakpoint-narrow) {
+		padding: 30px 3%;
+	}
+
+	@include respond-min-max(400, $breakpoint-mid) {
+		padding: 30px 12%;
+	}
+
+	@include respond-min-max($breakpoint-mid, 800) {
+		padding: 20px 3%;
+	}
+
+	@include respond-min-max($breakpoint-wide, 1160) {
+		padding: 20px 3%;
+	}
+}
+	.home-header-title,
+	.home-header-content {
+		color: #fff;
+	}
+	.home-header-title {
+		font-family: $serif-font-family;
+		font-weight: normal;
+		font-style: italic;
+		line-height: 0.95;
+
+		margin-bottom: 20px;
+
+		@include respond-min-max($breakpoint-mid, 650) {
+			@include font-size(38);
+		}
+	}
+	.home-header-content {
+		color: #eee;
+
+		@include respond-min-max($breakpoint-mid, 800) {
+			@include font-size(15);
+		}
+
+		@include respond-min-max($breakpoint-wide, 1260) {
+			@include font-size(15);
+		}
+	}
+
+
+
+.questionTeaser {
+	float: left;
+	width: 100%;
+	height: 300px;
+
+	position: relative;
+	overflow: hidden;
+
+	background-size: 100% 100%;
+	background-repeat: no-repeat;
+	background-position: center center;
+	background-size: cover;
+
+	//hack to make the first positioned element look in the right place
+	@include respond-min($breakpoint-narrow) {
+		height: 375px;
+	}
+
+	@include respond-min($breakpoint-mid) {
+		width: 50%;
+	}
+
+	@include respond-min($breakpoint-wide) {
+		width: 33%;
+
+		&:nth-child(3n-1) {
+			width: 34%;
+		}
+
+		//very hacky way of changing the positions of the first and the second elements at larger widths
+		&:nth-child(1) {
+			margin-left: 33%;
+			width: 34%;
+		}
+		&:nth-child(2) {
+			margin-left: -67%;
+			width: 33%;
+		}
+	}
+
+	&:hover {
+		.no-touch & .questionTeaser-title {
+			@include opacity(100);
+			@include transform(translateY(0));
+			@include prefixer(transition, 350ms, webkit moz ms o spec);
+		}
+	}
+
+}
+
+	.questionTeaser-title {
+		position: absolute;
+		bottom:0;
+		left: 0;
+		z-index: 3;
+
+		background: rgba(0, 0, 0, 0.5);
+		width: 100%;
+		padding: 10px 40px 10px 20px;
+		margin: 0;
+
+		@include font-size(24);
+		color: #fff;
+
+		background-image: url('#{$img-ui-path}/icon-arrow-right.png');
+		background-repeat: no-repeat;
+		background-position: 95% 16px;
+
+		@include respond-min($breakpoint-mid) {
+			@include opacity(0);
+			@include transform(translateY(100%));
+			@include prefixer(transition, 350ms, webkit moz ms o spec);
+
+			.touch & {
+				@include opacity(100);
+				@include transform(translateY(0));
+			}
+		}
+
+		.questionTeaser--noLink & {
+			background-image: none;
+		}
+
+		> h2 {
+			@include font-size(24);
+			color: #fff;
+			margin-bottom: 5px;
+		}
+		> p {
+			margin-bottom: 0;
+		}
+	}
+	.questionTeaser-text {
+		@include font-size(16);
+		padding: 20px;
+	}
+	.questionTeaser-questionMark {
+		position: absolute;
+		top: 0;
+		left: 0;
+		width: 100%;
+		height: 100%;
+
+		@include font-size(320);
+		text-align: center;
+		font-weight: bold;
+		line-height: 0.9;
+		color: #666;
+
+		@include prefixer(transition, 600ms, webkit moz ms o spec);
+		@include transform(rotate(20deg));
+
+		@include respond-min($breakpoint-narrow) {
+			@include font-size(400);
+			line-height: 1.02;
+		}
+
+		.questionTeaser:hover & {
+			@include prefixer(transition, 600ms, webkit moz ms o spec);
+			@include transform(rotate(5deg) scale(0.7) translateY(-25%));
+		}
+	}
+
+
+
+//  ==============================
+//  === SPECIFIC DEBATE IMAGES ===
+//  ==============================
+
+.questionTeaser-nations-favourite {		background-image: url('#{$img-path}/home/nations-favourite.jpg'); 	}
+.questionTeaser-happiness {				background-image: url('#{$img-path}/home/happiness.png');			}
+.questionTeaser-girls {					background-image: url('#{$img-path}/home/girls.png');				}
+.questionTeaser-shower-or-bath {		background-image: url('#{$img-path}/home/shower-or-bath.png');		}
+.questionTeaser-console-wars-ps4-xbox {	background-image: url('#{$img-path}/home/console-wars-ps4-xbox.png');		}
+.questionTeaser-xfactor-2013 {	background-image: url('#{$img-path}/home/xfactor-2013.png');		}
+
+
+//  ============================
+//  === PAGE CONTENT DEFAULT ===
+//  ============================
+
+.page-content {
+	padding-top: 180px;
+	padding-bottom: 180px;
+	width: 80%;
+	margin: 0 auto;
+
+	.system & {
+		padding: 0;
+	}
+
+	.btn {
+		display: block;
+		margin: 0 auto;
+		max-width: 200px;
+
+		&:hover {
+			background: #999;
+		}
+	}
+}
+
+//  ==============================
+//  === SPECIFIC PAGES 404/500 ===
+//  ==============================
+
+.page-content-error-title {
+	 @include font-size(200);
+	text-align: center;
+	font-weight: normal;
+	color: #666;
+	line-height: 1;
+	padding-top: 10%;
+
+	@include respond-min($breakpoint-narrow) { @include font-size(400); padding-top: 30%; }
+	@include respond-min($breakpoint-wide) { @include font-size(600); padding-top: 10%;}
+
+	//@include transform(rotate(10deg));
+}

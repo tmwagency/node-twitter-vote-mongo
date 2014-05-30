@@ -1,0 +1,36 @@
+{
+  "name": "node-twitter-vote-mongo",
+  "title": "Twitter Vote Counter",
+  "description": "A demo to show how to setup a Twitter vote counter",
+  "url": "/",
+  "version": "0.0.1-10",
+  "private": true,
+  "scripts": {
+    "start": "node index.js"
+  },
+  "dependencies": {
+    "express": "3.1.2",
+    "jade": "*",
+    "socket.io": "*",
+    "socket.io-client": "*",
+    "underscore": "*",
+    "cron": "*",
+    "twitter": "*",
+    "async": "*",
+    "connect-mongo": "*",
+    "mongoose": "*"
+  },
+  "devDependencies": {
+    "grunt": "*",
+    "grunt-devtools": "*",
+    "grunt-contrib-sass": "*",
+    "grunt-contrib-jshint": "*",
+    "grunt-contrib-watch": "*",
+    "grunt-contrib-uglify": "*",
+    "grunt-contrib-copy": "*"
+  },
+  "subdomain": "twitterpoll",
+  "engines": {
+    "node": "0.8.x"
+  }
+}

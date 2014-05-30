@@ -1,0 +1,36 @@
+- var categoryCounter = 0;
+for tag in question.tags
+	- categoryCounter++;
+
+	- var percentage = (Math.round( tags[tag].percentage * 10 ) / 10) + '%';
+
+	- var tagTitle = tag;
+
+	- // change tag names to contestant names for xfactor
+	- if (tagTitle === '#SamBaileyREAL') {
+	- 	tagTitle = 'Sam Bailey'
+	- } else if (tagTitle === '#LukeFriendMusic') {
+	- 	tagTitle = 'Luke Friend'
+	- } else if (tagTitle === '#nickymcdonald1') {
+	- 	tagTitle = 'Nicky McDonald'
+	- }
+
+	if (tag.indexOf('#') !== -1)
+		- var nonHashTagged = tag.substr(1)
+		div(class="question-category category-#{categoryCounter} category-#{nonHashTagged}",id="#{nonHashTagged}", data-term="#{tag}")
+			.category-visual-counter
+			//fallback for non JS users
+			noscript
+				.category-visual-counter(style="height:#{tags[tag].percentage}%")
+			h2.question-category-title=tagTitle
+				span.question-category-percentage #{percentage}
+				span.question-category-votes (#{addCommas(tags[tag].votes)})
+	else
+		div(class="question-category category-#{categoryCounter} category-#{tag}",id="#{tag}", data-term="#{tag}")
+			.category-visual-counter
+			//fallback for non JS users
+			noscript
+				.category-visual-counter(style="height:#{tags[tag].percentage}%")
+			h2.question-category-title=tagTitle
+				span.question-category-percentage #{percentage}
+				span.question-category-votes (#{addCommas(tags[tag].votes)})
