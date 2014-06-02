@@ -36,19 +36,17 @@ module.exports = function (app, config) {
 	app.set('view engine', 'jade');
 
 
-	app.configure(function () {
-		app.set('port', process.env.PORT || 3002);
+	app.set('port', process.env.PORT || 3002);
 
-		// expose package.json to views
-		app.use(function (req, res, next) {
-			res.locals.pkg = pkg;
-			next();
-		});
-
-		// bodyParser should be above methodOverride
-		app.use(bodyParser());
-		app.use(methodOverride());
+	// expose package.json to views
+	app.use(function (req, res, next) {
+		res.locals.pkg = pkg;
+		next();
 	});
+
+	// bodyParser should be above methodOverride
+	app.use(bodyParser());
+	app.use(methodOverride());
 
 	// development env config
 	if (config.mode === 'local') {
