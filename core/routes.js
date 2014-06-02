@@ -17,14 +17,12 @@ var question = require('../app/controllers/questionController')
 
 module.exports = function (app, twitter) {
 
-	app.get('/', question.index);
-
-	app.get('/about', question.about);
+	app.get('/', question.display);
 
 	//for the url /lynx-fragrance-poll call display method with param 1
-	app.get('/question/:name', question.display);
+	// app.get('/question/:name', question.display);
 
-	app.param('name', question.load);
+	// app.param('name', question.load);
 
 
 	// assume "not found" in the error msgs

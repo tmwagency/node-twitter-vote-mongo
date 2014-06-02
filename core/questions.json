@@ -1,9 +1,9 @@
 {
 	"0" : {
-		"title"					: "How happy is the nation?",
-		"subtitle"				: "How happy or sad is Twitter right now?  Check out what's trending…",
-		"qURL"					: "happiness",
-		"tags"					: "#happy,#sad",
+		"title"					: "What is more popular, cats or dogs?",
+		"subtitle"				: "Cats or dogs? There's only one way to find out…FIGHT!",
+		"qURL"					: "catdog",
+		"tags"					: "#cat,#dog",
 		"watchForNonHashTags"	: true,
 		"twitterText"			: "Twitter – telling us the mood of the nation since 2006. Check out the current state here:",
 		"fbText"				: "See how happy the internet is in real-time. Yes, we have that power. You can too:",

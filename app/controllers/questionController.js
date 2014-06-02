@@ -16,8 +16,8 @@ var mongoose = require('mongoose')
  * Load
  */
 
-exports.load = function(req, res, next, id){
-	console.log('questionController: Loading questions from DB');
+exports.load = function (req, res, next, id) {
+	console.log('questionController: Loading question from DB');
 
 	Question.load(id, function (err, question) {
 		if (err) return next(err)
@@ -58,10 +58,12 @@ exports.create = function (q, cb) {
 
 			question.save(cb);
 		} else {
+			//check we don't need to update it with new potential new values if our array has changed
+			//
+			// THIS LOGIC GOES IN HERE
+			//
 			cb('Question already exists in collection')
 		}
-
-		//
 	});
 
 };
@@ -73,75 +75,37 @@ exports.create = function (q, cb) {
 exports.display = function(req, res) {
 
 	console.log('questionController: Displaying page:');
-	//console.log(req.question);
 
-	page.getState(req.question, function (state) {
-		//console.log(state);
-		//reduce tags into associated array
-		var tags = _.reduce (state.tags, function (reduced, item) {
-			reduced[item.tag] = item;
-			return reduced;
-		}, {});
+	qController = this;
 
-		res.render('layouts/question', {
-			question: req.question,
-			state: state,
-			tags: tags
-		});
+	//load our question
+	Question.load('catdog', function (err, question) {
+
+		//if we can't find an id of the same name, it's not in the DB so add it
+		if (question) {
+
+			page.getState(question, function (state) {
+				//reduce tags into associated array
+				var tags = _.reduce (state.tags, function (reduced, item) {
+					reduced[item.tag] = item;
+					return reduced;
+				}, {});
+
+				res.render('layouts/question', {
+					question: question,
+					state: state,
+					tags: tags
+				});
+
+			});
+		} else {
+			console.log ('Question not found to display');
+		}
 	});
 
-
-	//want state to be
-	//state['#happy'].votes = 20;
-
-	//get current values for each total
-	// for (var i = 0; i < (req.question.tags).length; i++) {
-	// 	console.log(req.question.tags[i]);
-
-	// 	state.(req.question.tags[i]) = {
-	// 		votes: QDT.getCount,
-	// 		percentage: QDT.getPercentage
-	// 	}
-	// }
 
 
 };
 
 
-exports.about = function(req, res){
-
-	//display list of all the questions for our index page
-	console.log('questionController: About page');
-
-	//console.log(questions);
-
-	res.render('about'/*, {
-		title: '#MassDebates',
-		questionsJSON: questions
-	}*/);
-
-}
-
-
-/**
- * List
- */
-
-exports.index = function(req, res){
-
-	//display list of all the questions for our index page
-	console.log('questionController: index');
-
-	Question.loadAll(function (err, questions) {
-
-		//console.log(questions);
-
-		res.render('index', {
-			title: 'Twitter Vote Counter',
-			questionsJSON: questions
-		});
-
-	});
-
-}
 
