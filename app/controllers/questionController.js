@@ -52,7 +52,6 @@ exports.create = function (q, cb) {
 				tags				:	q.tags,
 
 				twitterText			:	q.twitterText,
-
 				isActive			:	q.isActive
 			});
 
